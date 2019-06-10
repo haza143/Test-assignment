@@ -28,7 +28,8 @@ like or unlike posts using DRF
 ### Obtain JWT Authentication
     
 Use HTTPie
-    http post http://127.0.0.1:8000/api-token-auth/ username=admin@mail.com  password=12345
+
+http post http://127.0.0.1:8000/api-token-auth/ username=admin@mail.com  password=12345
 
 ## Prerequisites
 
