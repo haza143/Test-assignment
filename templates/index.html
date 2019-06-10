@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <style>
+
+    [id='toggle-heart'] {
+    position: absolute;
+    left: -100vw;
+    }
+
+    [for='toggle-heart'] {
+    color: #aab8c2;
+    }
+
+    [id='toggle-heart']:checked + label {
+    color: #e2264d;
+    }
+
+        /* [for='toggle-heart'] {
+          font-size: 2em;
+          cursor: pointer;
+        } */
+
+    [for='toggle-heart'] {
+    align-self: center;
+    }
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 36px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style> -->
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class=" site-heading my-4 mt-3 text-white"> POSTS </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.Author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                    <!-- <input id="toggle-heart" type="checkbox" />
+                    <label for="toggle-heart">❤</label> -->
+                    <!-- {% if post.is_authenticated %} -->
+                    <a onclick="myFunction(this)" class="btn btn-primary">"Like"</a>
+                    <!-- {% endif %} -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+function myFunction(x) {
+    if(x.innerHTML == "Like"){
+        x.innerHTML = "Unlike";
+    }else{
+        x.innerHTML = "Like";
+    }
+}
+</script>
+{%endblock%}
